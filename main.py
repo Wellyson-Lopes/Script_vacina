@@ -1,5 +1,6 @@
 import datetime
 from datetime import timedelta, date
+import schedule
 import time
 
 usuario = input("Digite o nome do usuario: ")
@@ -51,4 +52,13 @@ print(f"sua proxima vacina {vacina} será no dia: {data_final}")
 hoje = datetime.date.today()
 data_vacina_select = data_final - hoje
 
-print(f"Faltam {data_vacina_select} para sua proxima Vacina, {vacina}")
+
+
+def reepetirTarefa():
+    print(f"Faltam {data_vacina_select} para sua proxima Vacina, {vacina}")
+
+schedule.every(10).seconds.do(reepetirTarefa)
+
+while 1:
+    schedule.run_pending()
+    time.sleep(1)
