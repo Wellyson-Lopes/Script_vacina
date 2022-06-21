@@ -61,6 +61,7 @@ def reepetirTarefa():
 schedule.every(10).seconds.do(reepetirTarefa)
 
 contador = 0
+
 while contador <= 50:
     schedule.run_pending()
     time.sleep(1)

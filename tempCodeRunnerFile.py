@@ -1,0 +1,1 @@
+cursor.execute("CREATE TABLE tipo_vacinas (id integer primary key autoincrement, vacina text, periodo integer, dose integer)")
