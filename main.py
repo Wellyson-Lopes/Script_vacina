@@ -57,8 +57,12 @@ data_vacina_select = data_final - hoje
 def reepetirTarefa():
     print(f"Faltam {data_vacina_select} para sua proxima Vacina, {vacina}")
 
+
 schedule.every(10).seconds.do(reepetirTarefa)
 
-while 1:
+contador = 0
+while contador <= 50:
     schedule.run_pending()
     time.sleep(1)
+    contador += 1
+    
