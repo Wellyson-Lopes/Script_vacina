@@ -82,25 +82,31 @@ elif tipo == "VOP":
     periodo = r[2] * 2
 periodo = int(periodo)
 
-print(f"{sexo} {usuario_resposavel}, a data da vacina de {filho} foi {data_vacina} e o ciclo é de {periodo} dias")
-data_final = data_vacina + timedelta(days=periodo)
+if periodo == 0:
+    print(f"{sexo} {usuario_resposavel}, Está é uma Vacina de dose única !")
+else:    
+    print(f"{sexo} {usuario_resposavel}, a data da vacina de {filho} foi {data_vacina} e o ciclo é de {periodo} dias")
 
-print(f"A proxima dose da vacina {tipo} será no dia: {data_final}")
+data_final = data_vacina + timedelta(days=periodo)
+if periodo == 0:
+    print(f"Parabéns {sexo} ,{filho} está protegido com a vacina {tipo} !")
+else: 
+    print(f"A proxima dose da vacina {tipo} será no dia: {data_final}")
 
 hoje = datetime.date.today()
 data_vacina_select = data_final - hoje
 
 
 
-def reepetirTarefa():
-    print(f"{sexo} {usuario_resposavel} Faltam {data_vacina_select} para {filho} tomar sua proxima dose da Vacina, {tipo}")
+def reepetirTarefa():  
+        print(f"{sexo} {usuario_resposavel} Faltam {data_vacina_select} para {filho} tomar sua proxima dose da Vacina, {tipo}")
 
-
-schedule.every(10).seconds.do(reepetirTarefa)
-
-contador = 0
-
-while contador <= 50:
-    schedule.run_pending()
-    time.sleep(1)
-    contador += 1
+if periodo != 0:
+    schedule.every(10).seconds.do(reepetirTarefa)
+    contador = 0
+    while contador <= 50:
+        schedule.run_pending()
+        time.sleep(1)
+        contador += 1
+else:
+    print(f"{usuario_resposavel}, volte sempre !")
