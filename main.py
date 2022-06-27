@@ -4,6 +4,9 @@ import schedule
 import time
 import conexao_banco
 from conexao_banco import *
+
+vcon = conexaoBanco()
+
 #input de dados pessoais
 
 usuario_resposavel = input("Escreva o seu nome: ")
