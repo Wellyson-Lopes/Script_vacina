@@ -2,7 +2,6 @@ import datetime
 from datetime import timedelta, date
 import schedule
 import time
-import conexao_banco
 from conexao_banco import *
 
 vcon = conexaoBanco()
