@@ -27,7 +27,6 @@ vsql = "SELECT * FROM usuarios"
 res = consulta(vcon,vsql)
 cst = allconsulta()
 
-
 if res == None:
     usuario_resposavel = input("Não a Usuários cadastrdos em nosso banco de dados, por favor, escreva seu nome")
     filho = input(f"{usuario_resposavel}, insira o nome de seu filho(a): ")
@@ -38,13 +37,15 @@ else:
     for i in (cst):
         print(f"Responsável: {i[1]}, filho(a): {i[2]} e o seu ID é {i[0]}")
     cadastrado = input("você já está cadastrado? se sim escreva[S], se não escreva [N]: ")
-    if cadastrado == "N" or cadastrado == "N":
+    if cadastrado == "N" or cadastrado == "n":
         usuario_resposavel = input("Por favor, escreva seu nome: ")
         filho = input(f"{usuario_resposavel}, insira o nome de seu filho(a): ")
         cadastro = "INSERT INTO usuarios (nome,filho) VALUES ('"+usuario_resposavel+"','"+filho+"')"
         inserir(vcon,cadastro)
+
     elif cadastrado == "S" or cadastrado == "s":
         id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ")
     else:
         print("você digitou uma informação errada. Escreva novamente!!!")
 
+print(cst)
