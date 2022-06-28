@@ -22,6 +22,13 @@ def inserir(conexao,cadastro):
     except Error as ex:
         print(ex)
 
+def allconsulta():
+    vcon = conexaoBanco()
+    consulta_tabela = vcon.cursor()
+    consulta_tabela.execute(vsql)
+    cst = consulta_tabela.fetchall()
+    return cst
+
 
 vsql = "SELECT * FROM usuarios"
 res = consulta(vcon,vsql)
@@ -42,10 +49,11 @@ else:
         filho = input(f"{usuario_resposavel}, insira o nome de seu filho(a): ")
         cadastro = "INSERT INTO usuarios (nome,filho) VALUES ('"+usuario_resposavel+"','"+filho+"')"
         inserir(vcon,cadastro)
-
+        allconsulta()
+        cst = allconsulta()  
+        
     elif cadastrado == "S" or cadastrado == "s":
         id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ")
     else:
         print("você digitou uma informação errada. Escreva novamente!!!")
 
-print(cst)

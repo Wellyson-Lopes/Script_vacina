@@ -1,4 +1,3 @@
-import conexao_banco
 from conexao_banco import *
 
 def inserir(conexao,sql):

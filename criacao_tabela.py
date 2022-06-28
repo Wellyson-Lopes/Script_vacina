@@ -1,4 +1,3 @@
-import conexao_banco
 from conexao_banco import *
 
 #CRIAÇÃO DE TABELA
