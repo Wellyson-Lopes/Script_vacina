@@ -56,20 +56,26 @@ else:
         cst = allconsulta() 
         for i in (cst):
             print(f"Usuários cadastrados, Resposavel: {i[1]}, filho {i[2]} seu ID é {i[0]}: ")
-        id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ") 
+        id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ")
+        vsql = "SELECT * FROM usuarios WHERE id = '"+id_cadastrado+"'"
+        cst = allconsulta()
+        for r in cst:
+            print(f"Olá {r[1]},  seja bem vindo ao nosso sistema!!!")
+        usuario_resposavel = i[1]
+        filho = i[2] 
         
     elif cadastrado == "S" or cadastrado == "s":
-        id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ")
+        id_cadastrado = input("escreva o numero referente ao ID do seu cadastro: ") 
+        vsql = "SELECT * FROM usuarios WHERE id = '"+id_cadastrado+"'"
+        cst = allconsulta()
+        for r in cst:
+            print(f"Olá {r[1]},  seja bem vindo ao nosso sistema!!!")
+        usuario_resposavel = r[1]
+        filho = r[2] 
     else:
         print("você digitou uma informação errada. Escreva novamente!!!")
 
-vsql = "SELECT * FROM usuarios WHERE id = '"+id_cadastrado+"'"
-cst = allconsulta()
-for r in cst:
-    print(f"Olá {r[1]},  seja bem vindo ao nosso sistema!!!")
 
-usuario_resposavel = i[1]
-filho = i[2]
 
 tipo = input(f"Olá {usuario_resposavel},  escreva o tipo de vacina que {filho} recebeu: [BCG], [hepatiteB], [DTP],[tetravalente] ou [VOP]: ")
 
@@ -99,3 +105,19 @@ while ano == None:
     ano = data_vacina_inteiro("Digite o ano da sua vacina: ")
 
 data_vacina = datetime.date(ano, mes, dia)
+print(data_vacina)
+
+vsql = "SELECT * FROM tipo_vacinas WHERE vacina = '"+tipo+"'"
+cst = allconsulta()
+for r in cst:
+    print(f"a Vacina selecionada foi {r[1]} e o periodo é de {r[2]}")
+tipo = r[1]
+periodo = r[2]
+
+cadastro = "INSERT INTO vacinas_aplicadas (usuario,vacina,data) VALUES ('"+filho+"','"+tipo+"','"+data_vacina+"')"
+inserir(vcon,cadastro)
+vsql = "SELECT * FROM vacinas_aplicadas WHERE vacina = '"+tipo+"'"
+allconsulta()
+cst = allconsulta() 
+for e in (cst):
+    print(f" {e[1]}, tomou a vacina: {e[2]} e seu ID é {e[0]}: ")
