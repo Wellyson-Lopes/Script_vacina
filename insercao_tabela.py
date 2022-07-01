@@ -17,7 +17,7 @@ while continuar == "s":
     vsql = "INSERT INTO tipo_vacinas (vacina,periodo,dose) VALUES ('"+tipo_vacina+"',"+periodo+","+dose+")"
     inserir(vcon,vsql)
     continuar = input("Deseja continuar? [s] para sim e [n] para não: ")
-    if continuar == "s":
+    if continuar == "s" or continuar == "S":
         continuar = "s"
     else:
         continuar = "n"

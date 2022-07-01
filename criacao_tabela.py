@@ -27,7 +27,7 @@ def criartabela(conexao,sql):
 criartabela(vcon,vsql)
 
 
-vsql="CREATE TABLE IF NOT EXISTS vacinas_aplicadas(id INTEGER PRIMARY KEY AUTOINCREMENT, usuario INTEGER, vacina INTEGER, data DATETIME);"
+vsql="CREATE TABLE IF NOT EXISTS vacinas_aplicadas(id INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT, filho TEXT, vacina TEXT, data DATETIME, doses INTEGER);"
 
 def criartabela(conexao,sql):
     try:
