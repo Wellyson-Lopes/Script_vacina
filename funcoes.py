@@ -24,7 +24,7 @@ def inserir(conexao,cadastro):
         cursor = conexao.cursor()
         cursor.execute(cadastro)
         conexao.commit()
-        print("Registro de tabela feito com Sucesso!!")
+        print("Usuário cadastrado com Sucesso!!!")
     except Error as ex:
         print(ex)
 
@@ -44,6 +44,17 @@ def dose_vacina_inteiro(perguntadose):
         dose = None
         print(f"{usuario_resposavel}, vcoê digitou um valor iválido. Tente novamente!!!")
     return dose
+
+# input e comandos refentes as datas de vacinação
+def data_vacina_inteiro(pergunta):
+    data_vacina = input(pergunta)
+    if data_vacina.isdigit():
+        data = data_vacina
+        data = int(data)
+    else:
+        data = None
+        print(f"{usuario_resposavel}, vcoê digitou um valor iválido. Tente novamente!!!")
+    return data
 
 def reepetirTarefa(vsql, filho):
     vsql = "SELECT * FROM vacinas_aplicadas WHERE filho = '"+filho+"'"  
